@@ -56,9 +56,10 @@ module.exports = function hs100(RED) {
         var plug = client.getPlug({ host: config.host });
 
         node.on('input', function(msg) {
-            if (msg.payload === 'on' || msg.topic === 'on') {
+            // Change payload to 1 or 0 from on or off
+            if (msg.payload === 1 || msg.topic === 'on') {
                 setPowerState(true);
-            } else if (msg.payload === 'off' || msg.topic === 'off') {
+            } else if (msg.payload === 0 || msg.topic === 'off') {
                 setPowerState(false);
             } else {
                 var actuation = getActuation(msg.payload) || getActuation(msg.topic);
@@ -105,6 +106,8 @@ module.exports = function hs100(RED) {
             if (actuation) {
                 var method = hs100.supportedActuations[actuation.toLowerCase()];
                 if (method) {
+                    // Clear the node status when actuation is performed.
+                    node.status({});
                     return { name: actuation, method: method };
                 }
             }
