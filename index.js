@@ -57,7 +57,7 @@ module.exports = function hs100(RED) {
 
         node.on('input', function(msg) {
             // Change payload to 1 or 0 from on or off
-            if (msg.payload === 1 || msg.topic === 'on') {
+            if (msg.payload == 1 || msg.topic === 'on') {
                 setPowerState(true);
             } else if (msg.payload === 0 || msg.topic === 'off') {
                 setPowerState(false);
