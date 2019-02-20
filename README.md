@@ -1,9 +1,11 @@
-# node-red-contrib-hs100
 
+## Note
 Note: This just has some minor changes to support my nodered installation design.
 
 Original Description Below:
 
+
+# node-red-contrib-hs100
 
 This Node-RED node is for controlling tp-link Wi-Fi Smart Plug - Model HS100.
 
